@@ -7,12 +7,19 @@
 			fileFilter: [],
 			filedata: [],
 			allFiles: [],
+			resstrictNum: 4,
 			onSelect: function(e) {
 				var files = e.target.files,
 					self = this,
 					previews = [];
 				this.fileFilter = this.fileFilter.concat(filter(files));
 				this.allFiles = this.fileFilter;
+				
+				//当文件数大于限制图片数时，直接返回
+				if (this.fileFilter.length > this.resstrictNum){
+					alert('不要上传大于限定的数量： ' + this.resstrictNum);
+					return;
+				}
 				//为文件添加索引
 				for (var i = 0, file; file = this.fileFilter[i]; i++) {
 					file.index = i;
