@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>demo-imgcompress</title>
+	</head>
+
+	<body>
+		<label><i class="iconfont"></i><input accept="image/png,image/jpeg" type="file" style="display: none;" id="voucher" multiple=""></label>
+		<div class="deploy"></div>
+		<script src="imgcompress.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			IMGCompress.init({
+				fileInput: '#voucher',
+				deleteBtn: '.imgItem .iconfont',
+				deployPics: '.deploy',
+				placement: '<p>上传凭证&nbsp;最多4张</p>',
+				uploadOpt: {
+					method: 'post',
+					url: 'http://www.baidu.com',
+					upBtn: ''
+				},
+				ajaxStart: function() {
+					console.log("staat");
+				},
+				ajaxError: function(error) {},
+				ajaxUpload: function() {},
+				ajaxSuccess: function(data) {}
+			})
+		</script>
+	</body>
+
+</html>

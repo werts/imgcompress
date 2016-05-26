@@ -1,0 +1,24 @@
+{
+  "name": "imgconpress",
+  "version": "0.0.1",
+  "description": "used to compress\\preview\\upload images",
+  "main": "imgcompress.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/werts/imgcompress.git"
+  },
+  "keywords": [
+    "image",
+    "preview",
+    "compress"
+  ],
+  "author": "werts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/werts/imgcompress/issues"
+  },
+  "homepage": "https://github.com/werts/imgcompress#readme"
+}
