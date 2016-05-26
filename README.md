@@ -1,19 +1,21 @@
 ## 图片压缩插件
 #### 无第三方库依赖，因此可以方便整合入项目，
-#### 最先在内部使用，更多bug请联系作者
+#### 更多bug请联系作者,或者加入contribute
 #### 参考了网上部分资料，整合更多预览、压缩功能,异步上传
 
 #Usage
 ------
 	支持commonjs cmd
--------
+------
 
 ```js
 	//require
 	var imgcompress = require('imgcompress');
+```
 
 ```html
 	<script src="imgcompress.min.js"></script>
+```
 
 ```js
     IMGCompress.init({
@@ -30,4 +32,4 @@
 		ajaxError: function(){}, //异步失败回调
 		ajaxSuccess: function(data){}, //异步成功的回调
 	});
-
+```
