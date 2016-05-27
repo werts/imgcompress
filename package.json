@@ -1,6 +1,6 @@
 {
   "name": "imgconpress",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "used to compress\\preview\\upload images",
   "main": "imgcompress.js",
   "scripts": {
