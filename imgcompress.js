@@ -280,5 +280,12 @@
 			}
 		}
 	};
-	win.IMGCompress = IMGCompress;
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = IMGCompress;
+	else if(typeof define === 'function' && define.amd)
+		define([], IMGCompress);
+	else if(typeof exports === 'object')
+		exports["IMGCompress"] = IMGCompress;
+	else
+		win.IMGCompress = IMGCompress;
 }(window, document));
