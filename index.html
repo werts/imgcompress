@@ -9,6 +9,7 @@
 	<body>
 		<label><i class="iconfont"></i><input accept="image/png,image/jpeg" type="file" style="display: none;" id="voucher" multiple=""></label>
 		<div class="deploy"></div>
+		<label class="upload">上传</label>
 		<script src="imgcompress.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 			IMGCompress.init({
@@ -19,15 +20,22 @@
 				resstrictNum: 5,
 				uploadOpt: {
 					method: 'post',
-					url: 'http://www.baidu.com',
-					upBtn: ''
+					url: 'http://m.winxuan.com/aftersales/upload',
+					upBtn: '.upload'
 				},
 				ajaxStart: function() {
 					console.log("staat");
 				},
 				ajaxError: function(error) {},
-				ajaxUpload: function() {},
-				ajaxSuccess: function(data) {}
+				ajaxUploaded: function() {
+					sale.handleType();
+				},
+				ajaxSuccess: function(data) {
+					
+				},
+				ajaxEnd: function(){
+					console.log("end");
+				}
 			})
 		</script>
 	</body>

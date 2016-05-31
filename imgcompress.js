@@ -46,7 +46,7 @@
 										ptemp = ptemp.replace(/\{index\}/g, fd.index)
 											.replace(/\{src\}/g, fd.filedata);
 										previews.push(ptemp);
-									} catch (e) {
+									} catch (error) {
 										//TODO handle the exception
 									}
 								} else {
@@ -236,18 +236,21 @@
 	};
 	IMGCompress.upload = function() {
 		var postDataArr = [],
-			self = this;
-		for (var i = 0, file; file = this.filedata[i]; i++) {
+			self = this,
+			len = this.filedata.length;
+		while(len > 0){
+			var file = this.filedata[len-1];
 			var filestr = win.atob(file.filedata.split(',')[1]);
 			var type = file.filedata.split(',')[0];
 			var buffer = new ArrayBuffer(filestr.length);
 			var ubuffer = new Uint8Array(buffer);
+			var Builder = win.WebKitBlobBuilder || win.MozBlobBuilder;
+			var blob;
 			type = type.replace(/([a-z]+\:)|(\;[a-z0-9]+)/g, '');
 			for (var j = 0; j < filestr.length; j++) {
 				ubuffer[j] = filestr.charCodeAt(j);
 			}
-			var Builder = win.WebKitBlobBuilder || win.MozBlobBuilder;
-			var blob;
+			
 			if (Builder) {
 				var builder = new Builder();
 				builder.append(buffer);
@@ -257,28 +260,33 @@
 					type: type
 				});
 			}
+			
 			var formdata = new FormData();
 			var xhr = new XMLHttpRequest();
-
 			formdata.append('images', blob);
 			options.ajaxStart();
 			if (xhr.upload) {
 				if (xhr.readyState == 4) {
 					if (xhr.status == 200) {
 						options.ajaxSuccess(xhr.responseText);
-
+						options.ajaxEnd();
+						if (len == 1){
+							options.ajaxUploaded();
+						}
 					} else {
 						options.ajaxError(xhr.responseText);
+						options.ajaxEnd();
+						
 					}
 				}
-
 				//start upload
 				xhr.open(options.uploadOpt.method, options.uploadOpt.url, true);
 				//setting headers
 				//xhr.setRequestHeader();
 				xhr.send(formdata);
-			}
-		}
+			}		
+			len--;
+		}			
 	};
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = IMGCompress;
