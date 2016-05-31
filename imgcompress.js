@@ -171,7 +171,7 @@
 			} else {
 				ctx.drawImage(image, 0, 0, w, h);
 			}
-			var re = canvas.toDataURL('image/jpeg', .65);
+			var re = canvas.toDataURL('image/jpeg', 0.65);
 			callback(re);
 		};
 		if (image.complete) {
@@ -208,7 +208,7 @@
 		if (options.fileInput) {
 			var inputs = doc.querySelectorAll(options.fileInput);
 			inputs[0].addEventListener('change', function(e) {
-				self.onSelect(e)
+				self.onSelect(e);
 			}, false);
 		}
 		//bind delete
