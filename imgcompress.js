@@ -59,7 +59,7 @@
 											ptemp = ptemp.replace(/\{index\}/g, fd.index)
 												.replace(/\{src\}/g, fd.filedata);
 											previews.push(ptemp);
-										} catch (e) {
+										} catch (error) {
 											//TODO handle the exception
 										}
 									});
