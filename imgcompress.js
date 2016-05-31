@@ -237,7 +237,8 @@
 	IMGCompress.upload = function() {
 		var postDataArr = [],
 			self = this,
-			len = this.filedata.length;
+			len = this.filedata.length,
+			uped = 0;
 		while(len > 0){
 			var file = this.filedata[len-1];
 			var filestr = win.atob(file.filedata.split(',')[1]);
@@ -269,10 +270,8 @@
 				if (xhr.readyState == 4) {
 					if (xhr.status == 200) {
 						options.ajaxSuccess(xhr.responseText);
-						options.ajaxEnd();
-						if (len == 1){
-							options.ajaxUploaded();
-						}
+						uped++;
+						options.ajaxEnd();						
 					} else {
 						options.ajaxError(xhr.responseText);
 						options.ajaxEnd();
@@ -284,8 +283,10 @@
 				//setting headers
 				//xhr.setRequestHeader();
 				xhr.send(formdata);
+				if (--len == 0){
+					options.ajaxUploaded(uped);
+				}
 			}		
-			len--;
 		}			
 	};
 	if(typeof exports === 'object' && typeof module === 'object')

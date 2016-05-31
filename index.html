@@ -27,7 +27,8 @@
 					console.log("staat");
 				},
 				ajaxError: function(error) {},
-				ajaxUploaded: function() {
+				ajaxUploaded: function(uped) {
+					console.log("uped: " + uped);
 					sale.handleType();
 				},
 				ajaxSuccess: function(data) {
